@@ -4,7 +4,7 @@ async function connectAndConsume() {
   try {
       const connection = await amqp.connect('amqp://guest:guest@rabbitmq');
       const channel = await connection.createChannel();
-      const queueName = 'test_queue';
+      const queueName = 'email_queue';
       await channel.assertQueue(queueName, {
           durable: true
       });

@@ -10,9 +10,9 @@ $connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
 for($i= 0 ; $i<100000; $i++){
-    $channel->queue_declare('test_queue', false, true, false, false);
+    $channel->queue_declare('email_queue', false, true, false, false);
     $msg = new AMQPMessage("Email  no # $i");
-    $channel->basic_publish($msg, '', 'test_queue');
+    $channel->basic_publish($msg, '', 'email_queue');
      echo " [x] PHP Microservice :::: email no# $i  sent to Queue!'\n";
 }
 
